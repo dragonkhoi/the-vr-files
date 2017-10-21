@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var topPosts = firebase.database().ref('posts').orderByChild('likes').limitToFirst(4);
+var topPosts = firebase.database().ref('posts').orderByChild('likes').limitToLast(4);
 topPosts.once('value', function (snapshot) {
   var count = 1;
   snapshot.forEach(function(childSnapshot){
@@ -19,13 +19,14 @@ topPosts.once('value', function (snapshot) {
     var postSnippet = childVal.snippet;
     var postTimestamp = childVal.timestamp;
     var postId = childSnapshot.key;
-    document.getElementById("post-title-" + count).innerHTML = postTitle;
-    document.getElementById("post-subtitle-" + count).innerHTML = postSnippet;
-    document.getElementById("post-author-" + count).innerHTML = postAuthor;
-    document.getElementById("post-link-" + count).href += postId;
+    var htmlID = 5 - count;
+    document.getElementById("post-title-" + htmlID).innerHTML = postTitle;
+    document.getElementById("post-subtitle-" + htmlID).innerHTML = postSnippet;
+    document.getElementById("post-author-" + htmlID).innerHTML = postAuthor;
+    document.getElementById("post-link-" + htmlID).href += postId;
     var authorFull = postAuthor.toLowerCase().replace(/\s+/g, '');
-    document.getElementById("post-author-" + count).href = document.getElementById("post-author-" + count).href + "#" + authorFull;
-    document.getElementById("post-timestamp-" + count).innerHTML = postTimestamp;
+    document.getElementById("post-author-" + htmlID).href = document.getElementById("post-author-" + count).href + "#" + authorFull;
+    document.getElementById("post-timestamp-" + htmlID).innerHTML = postTimestamp;
     count++;
   });
 });
