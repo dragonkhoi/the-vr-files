@@ -13,16 +13,18 @@ var thisUrl = window.location.href;
 var idQ = thisUrl.indexOf('?');
 var idStartAt = idQ + 3;
 var postName = thisUrl.substring(idStartAt);
+var likedAlready = false;
 console.log(postName);
 
 var postRef = firebase.database().ref().child("posts");
-var author, body, citation, link, pdf, snippet, tags, timestamp, title;
+var author, body, citation, link, likes, pdf, snippet, tags, timestamp, title;
 postRef.child(postName).once('value').then(function(snapshot){
   var val = snapshot.val();
   author = val.author;
   body = val.body;
   citation = val.citation;
   link = val.link;
+  likes = val.likes;
   pdf = val.pdf;
   snippet = val.snippet;
   tags = val.tags;
@@ -30,6 +32,17 @@ postRef.child(postName).once('value').then(function(snapshot){
   title = val.title;
   updatePage();
 });
+
+function increaseLikes(){
+  if(likedAlready){
+    return;
+  }
+  likes++;
+  likedAlready = true;
+  var num = likes;
+  postRef.child(postName).update({likes: num});
+  document.getElementById("postLikes").innerHTML = "" + likes;
+}
 
 function updatePage(){
   document.getElementById("postTitle").innerHTML = title;
@@ -42,4 +55,5 @@ function updatePage(){
   document.getElementById("postCitation").innerHTML = citation;
   document.getElementById("postPDF").href = pdf;
   document.getElementById("postLink").href = link;
+  document.getElementById("postLikes").innerHTML = "" + likes;
 }

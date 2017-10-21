@@ -50,10 +50,10 @@
             <li class="nav-item">
               <a onclick="openDropdown()" class="nav-link" id="dropdownButton">Articles</a>
               <div id="dropdownList" class="dropdown-content">
-                <a href="postlist.html?0=ALL"> All </a>
-                <a href="postlist.html?0=HEALTHCARE"> Healthcare </a>
-                <a href="postlist.html?0=TRAINING"> Training </a>
-                <a href="postlist.html?0=EDUCATION"> Education </a>
+                <a href="postlist.html?0=all"> All </a>
+                <a href="postlist.html?0=healthcare"> Healthcare </a>
+                <a href="postlist.html?0=training"> Training </a>
+                <a href="postlist.html?0=education"> Education </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
@@ -63,77 +63,25 @@
       </div>
     </nav>
     <div class="button-bar" style="background-image: url('img/home-bg.jpg')">
-      <input type="text" id="search-bar" placeholder="Search..."> </input>
+      <form id="search-form">
+        <input type="text" id="search-bar" placeholder="Search..."> </input>
+        <input type="submit" style="display: none" />
+      </form>
       <div class="button-row">
-        <button class="industry-category" onclick="selectIndustry(this)"> <h5>ALL</h5> </button>
-        <button class="industry-category" onclick="selectIndustry(this)"> <h5>HEALTHCARE</h5> </button>
-        <button class="industry-category" onclick="selectIndustry(this)"> <h5>TRAINING</h5> </button>
-        <button class="industry-category" onclick="selectIndustry(this)"> <h5>EDUCATION</h5> </button>
-        <button class="industry-category" onclick="selectIndustry(this)"> <h5>BRANDING</h5> </button>
+        <button class="industry-category" onclick="selectIndustry(this)" id="industry-all"> <h5>ALL</h5> </button>
+        <button class="industry-category" onclick="selectIndustry(this)" id="industry-healthcare"> <h5>HEALTHCARE</h5> </button>
+        <button class="industry-category" onclick="selectIndustry(this)" id="industry-training"> <h5>TRAINING</h5> </button>
+        <button class="industry-category" onclick="selectIndustry(this)" id="industry-education"> <h5>EDUCATION</h5> </button>
+        <button class="industry-category" onclick="selectIndustry(this)" id="industry-branding"> <h5>BRANDING</h5> </button>
       </div>
     </div>
     <!-- Main Content -->
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-preview">
-            <a href="post.html?0=" id="post-link-1">
-              <h2 class="post-title" id="post-title-1">
-                How Immersive is Enough?
-              </h2>
-              <h3 class="post-subtitle" id="post-subtitle-1">
-                A meta-analysis of the effect of immersive technology on user presence
-              </h3>
-            </a>
-            <p class="post-meta" id="post-meta-1">Posted by
-              <a href="about.html" id="post-author-1">Khoi Le</a>
-              on <span id="post-timestamp-1"> October 18, 2017 </span></p>
-          </div>
-          <hr>
-          <div class="post-preview">
-            <a href="post.html?0=" id="post-link-2">
-              <h2 class="post-title" id="post-title-2">
-                Immersive Virtual Reality for Pediatric Pain
-              </h2>
-              <h3 class="post-subtitle" id="post-subtitle-2">
-                Stanford explores the benefits and risks of using VR to treat pediatric pain
-              </h3>
-            </a>
-            <p class="post-meta" id="post-meta-2">Posted by
-              <a href="about.html" id="post-author-2">Khoi Le</a>
-              on <span id="post-timestamp-2"> October 18, 2017 </span></p>
-          </div>
-          <hr>
-          <div class="post-preview">
-            <a href="post.html?0=" id="post-link-3">
-              <h2 class="post-title" id="post-title-3">
-                When does Virtual Embodiment Change our Minds?
-              </h2>
-              <h3 class="post-subtitle" id="post-subtitle-3">
-                Stanford explores how VR can shape our opinions
-              </h3>
-            </a>
-            <p class="post-meta" id="post-meta-3">Posted by
-              <a href="about.html" id="post-author-3">Khoi Le</a>
-              on <span id="post-timestamp-3"> October 18, 2017 </span></p>
-          </div>
-          <hr>
-          <div class="post-preview">
-            <a href="post.html?0=" id="post-link-4">
-              <h2 class="post-title" id="post-title-4">
-                Become the Animal.
-              </h2>
-              <h3 class="post-subtitle" id="post-subtitle-4">
-                Embodying animals in immersive virtual environment increases inclusion of nature in self and involvement with nature
-              </h3>
-            </a>
-            <p class="post-meta" id="post-meta-4">Posted by
-              <a href="about.html" id="post-author-4">Khoi Le</a>
-              on <span id="post-timestamp-4"> October 18, 2017 </span></p>
-          </div>
-          <hr>
+        <div class="col-lg-8 col-md-10 mx-auto" id="post-container">
+
           <!-- Pager -->
-          <div class="clearfix">
+          <div class="clearfix" id="older-posts">
             <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
           </div>
         </div>
@@ -149,7 +97,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://twitter.com/vrfiles">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -157,18 +105,10 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.facebook.com/The-VR-Files-926957264129855/">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
               </li>

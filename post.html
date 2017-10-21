@@ -71,9 +71,15 @@
             <div class="post-heading">
               <h1 id="postTitle">Man must explore, and this is exploration at its greatest</h1>
               <h2 class="subheading" id="postSnippet">Problems look mighty small from 150 miles up</h2>
+
               <span class="meta">Posted by
                 <a href="about.html" id="postAuthor">Start Bootstrap</a>
-                on <span id="postTimestamp">August 24, 2017</span></span>
+                on <span id="postTimestamp">August 24, 2017</span>
+              </span>
+              <span>
+                <i class="like-button fa fa-thumbs-up fa-lg" aria-hidden="true" onclick="increaseLikes()"></i>
+                <span id="postLikes"> 0 </span>
+              </span>
             </div>
           </div>
         </div>
@@ -85,6 +91,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
+
+            <!-- <div class="like-bar">
+              <button onclick="increaseLikes()"  style="float: left"> Like </button> <p style="float: left" id="likes"> 0 </p>
+            </div> -->
             <p id="postBody"></p>
             <h3> Citation </h3>
             <p id="postCitation"></p>
@@ -105,7 +115,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://twitter.com/vrfiles">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -113,7 +123,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.facebook.com/The-VR-Files-926957264129855/">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
