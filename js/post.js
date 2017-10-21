@@ -56,4 +56,5 @@ function updatePage(){
   document.getElementById("postPDF").href = pdf;
   document.getElementById("postLink").href = link;
   document.getElementById("postLikes").innerHTML = "" + likes;
+  document.head.title = title;
 }
