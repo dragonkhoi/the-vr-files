@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var topPosts = firebase.database().ref('posts').orderByChild('likes').limitToLast(4);
+var topPosts = firebase.database().ref('posts').orderByChild('likes').limitToFirst(4);
 topPosts.once('value', function (snapshot) {
   var count = 1;
   snapshot.forEach(function(childSnapshot){
