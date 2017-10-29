@@ -24,7 +24,6 @@
     <link href="css/index.css" rel="stylesheet">
 
 
-
   </head>
 
   <body>
@@ -61,7 +60,33 @@
         </div>
       </div>
     </nav>
+    <div class="button-bar" style="background-image: url('img/home-bg.jpg'); text-align: center">
+      <h2 style="color: white; padding-bottom: 20px;"> POST EDITOR </h2>
+    </div>
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <form >
+        <span class="form-row"><span class="form-label"> Title:</span> <input type="text" id="input-title" placeholder="Post display name"></input> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Author:</span>  <input type="text" id="input-author" placeholder="Your name goes here"></input> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Snippet:</span> <textarea rows="3" cols="32" id="input-snippet" placeholder="Brief tagline or subtitle"></textarea> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Body:</span> <textarea rows="10" cols="32" id="input-body" placeholder="The content"></textarea> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Citation:</span> <textarea rows="4" cols="32" id="input-citation" placeholder="APA format preferred"></textarea> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Tags:</span>  <textarea rows="2" cols="32" id="input-tags" placeholder="Search terms"></textarea> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> Link:</span>  <input type="text" id="input-link" placeholder="Link to research"></input> </span>
+        <br>
+        <span class="form-row"><span class="form-label"> PDF:</span>  <input type="file" id="input-pdf"></input> <span id="percentUpload"></span></span>
 
+        <br>
+
+      </form>
+      <button class="form-button" id="submit-button" onclick="pushData()"> UPDATE </button>
+
+    </div>
 
 
     <!-- Footer -->
@@ -94,7 +119,7 @@
     </footer>
 
     <script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/post-edit.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>

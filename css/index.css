@@ -86,3 +86,13 @@
 .like-button:hover {
   color: rgb(230,230,230);
 }
+
+.form-label {
+  width: 20%;
+}
+
+.form-button {
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 5px;
+}

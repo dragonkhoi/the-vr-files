@@ -57,7 +57,7 @@ function getIndustry(){
 
   return searchTerms;
 }
-
+var currentPostElement = null;
 function createPostElement(postObj){
   postCount++;
   var postContainer = document.getElementById("post-container");
@@ -83,8 +83,12 @@ function createPostElement(postObj){
   postPreview.appendChild(postAuthor);
   var olderPostsBtn = document.getElementById("older-posts");
   var horizontal = document.createElement("hr");
-  postContainer.insertBefore(postPreview, olderPostsBtn);
-  postContainer.insertBefore(horizontal, olderPostsBtn);
+  if(currentPostElement == null){
+    currentPostElement = olderPostsBtn;
+  }
+  postContainer.insertBefore(postPreview, currentPostElement);
+  postContainer.insertBefore(horizontal, currentPostElement);
+  currentPostElement = postPreview;
 }
 
 window.onload = windowLoad;
@@ -112,7 +116,7 @@ function handleForm(event){
 }
 
 
-var allPosts = firebase.database().ref('posts');
+var allPosts = firebase.database().ref('posts').orderByChild("likes");
 
 allPosts.once('value', function (snapshot) {
   snapshot.forEach(function(childSnapshot){
