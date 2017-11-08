@@ -58,12 +58,18 @@
   background-color: rgba(0,0,0,0);
 }
 .industry-category {
+  flex: 1 1 auto;
   flex-grow: 1;
   border: none;
   background-color: rgba(0,0,0,0.2);
   padding: 10px;
   color: white;
   height: auto;
+}
+@media all and (max-width: 640px) {
+  .button-row {
+    flex-direction: column;
+  }
 }
 .industry-category:hover {
   background-color: rgba(0,0,0,0.3);

@@ -95,7 +95,7 @@ window.onload = windowLoad;
 
 function windowLoad () {
   document.getElementById("search-form").addEventListener('submit', handleForm);
-  document.getElementById("industry-" + currentIndustry).style.backgroundColor = "rgba(20,20,20,0.8)";
+  document.getElementById("industry-" + currentIndustry).style.backgroundColor = "rgba(100,100,100,0.8)";
 }
 
 function handleForm(event){
