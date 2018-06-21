@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Clean Blog v4.0.0-beta (https://startbootstrap.com/template-overviews/clean-blog)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE)
- */
 body {
   font-size: 20px;
   color: #333333;
@@ -27,11 +22,13 @@ a {
   color: #333333;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
   transition: all 0.2s; }
   a:focus, a:hover {
     color: #0085A1; }
 
 a img:focus, a img:hover {
+  cursor: -webkit-zoom-in;
   cursor: zoom-in; }
 
 blockquote {
@@ -62,6 +59,10 @@ blockquote {
   color: white;
   background: #0085A1;
   text-shadow: none; }
+
+img::-moz-selection {
+  color: white;
+  background: transparent; }
 
 img::selection {
   color: white;
@@ -111,6 +112,7 @@ body {
     #mainNav {
       -webkit-transition: background-color 0.2s;
       -moz-transition: background-color 0.2s;
+      -o-transition: background-color 0.2s;
       transition: background-color 0.2s;
       /* Force Hardware Acceleration in WebKit */
       -webkit-transform: translate3d(0, 0, 0);
@@ -125,7 +127,10 @@ body {
         top: -77px;
         -webkit-transition: -webkit-transform 0.2s;
         -moz-transition: -moz-transform 0.2s;
+        transition: -webkit-transform 0.2s;
+        -o-transition: transform 0.2s;
         transition: transform 0.2s;
+        transition: transform 0.2s, -webkit-transform 0.2s;
         border-bottom: 1px solid white;
         background-color: rgba(255, 255, 255, 0.9); }
         #mainNav.is-fixed .navbar-brand {
@@ -251,6 +256,7 @@ header.masthead {
     border: none;
     border-radius: 0;
     background: none;
+    -webkit-box-shadow: none !important;
     box-shadow: none !important;
     font-family: 'Lora', 'Times New Roman', serif; }
     .floating-label-form-group input::-webkit-input-placeholder,
@@ -268,6 +274,7 @@ header.masthead {
     -webkit-transition: top 0.3s ease, opacity 0.3s ease;
     -moz-transition: top 0.3s ease, opacity 0.3s ease;
     -ms-transition: top 0.3s ease, opacity 0.3s ease;
+    -o-transition: top 0.3s ease, opacity 0.3s ease;
     transition: top 0.3s ease, opacity 0.3s ease;
     vertical-align: middle;
     vertical-align: baseline;
@@ -349,12 +356,3 @@ footer {
   color: white;
   border: 1px solid #0085A1;
   background-color: #0085A1; }
-
-.dropdown-content{
-  display: none;
-  position: absolute;
-}
-
-.show {
-  display: block;
-}

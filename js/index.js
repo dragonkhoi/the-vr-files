@@ -1,6 +1,6 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAyeEj9FK-ISf3ZdpFL5FZBT3utVuMZR3k",
+  apiKey: API_KEY,
   authDomain: "the-vr-files.firebaseapp.com",
   databaseURL: "https://the-vr-files.firebaseio.com",
   projectId: "the-vr-files",
@@ -29,4 +29,31 @@ topPosts.once('value', function (snapshot) {
     document.getElementById("post-timestamp-" + htmlID).innerHTML = postTimestamp;
     count++;
   });
+});
+
+initApp = function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var uid = user.uid;
+      var phoneNumber = user.phoneNumber;
+      var providerData = user.providerData;
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('login-button').textContent = 'Portal';
+      });
+    } else {
+      // User is signed out.
+
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
+
+window.addEventListener('load', function() {
+  initApp()
 });
