@@ -21,6 +21,7 @@ initApp = function() {
       var providerData = user.providerData;
       user.getIdToken().then(function(accessToken) {
         document.getElementById('login-button').textContent = 'Portal';
+        document.getElementById('login-button').href = 'creator-portal.html';
       });
       document.getElementById("your-uploads-button").click();
       populateTabList("your-uploads");

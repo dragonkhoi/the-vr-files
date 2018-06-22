@@ -9,6 +9,27 @@ var config = {
 };
 firebase.initializeApp(config);
 
+initApp = function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      user.getIdToken().then(function(accessToken) {
+        document.getElementById('login-button').textContent = 'Portal';
+        document.getElementById('login-button').href = 'creator-portal.html';
+      });
+
+    } else {
+      // User is signed out.
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
+
+window.addEventListener('load', function() {
+  initApp()
+});
+
 var thisUrl = window.location.href;
 var idQ = thisUrl.indexOf('?');
 var idStartAt = idQ + 3;
