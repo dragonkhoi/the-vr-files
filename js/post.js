@@ -34,9 +34,19 @@ postRef.child(postName).once('value').then(function(snapshot){
 });
 
 function increaseLikes(){
+  if(!firebase.auth().currentUser){
+    alert("You must login to like posts.");
+    return;
+  }
+
   if(likedAlready){
     return;
   }
+  var userId = firebase.auth().currentUser.uid;
+  var likedKeys = firebase.database().ref("users").child(userId).child(LIKED_KEY_REF).push();
+  likedKeys.set({
+    'postKey': postName
+  });
   likes++;
   likedAlready = true;
   var num = likes;

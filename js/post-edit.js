@@ -90,8 +90,13 @@ function getMonth(num){
     return "December";
   }
 }
-function pushData(){
+
+function pushPost(){
   var newPost = firebase.database().ref('posts').push();
+  if(postId != "new"){
+    newPost = firebase.database().ref('posts').child(postId);
+  }
+
   var title = inputTitle.value;
   var author = inputAuthor.value;
   var snippet = inputSnippet.value;
@@ -107,6 +112,7 @@ function pushData(){
   var timeyear = d.getFullYear();
   var monthName = getMonth(timemonth);
   var timestamp = monthName + " " + timedate + ", " + timeyear;
+  var likes = document.getElementById("likes").innerHTML;
   newPost.set({
     'title': title,
     'author': author,
@@ -117,12 +123,68 @@ function pushData(){
     'link': link,
     'pdf': pdf,
     'timestamp': timestamp,
-    'likes': 0
+    'likes': likes
   });
-  var key = newPost.getKey();
-  console.log("pushing to: " + key);
+  var newPostKey = newPost.getKey();
+  console.log("pushing to: " + newPostKey);
+
+  return newPostKey;
+}
+function pushData(){
+
+  var postKey = pushPost();
+  pushToUser(postKey);
+
   return false;
 }
+
+function pushToUser(newPostKey){
+  if(postId != "new"){
+    return;
+  }
+  var userId = firebase.auth().currentUser.uid;
+
+  var userPost = firebase.database().ref('users').child(userId).child(POST_KEY_REF).push();
+  userPost.set({
+    'postKey': newPostKey
+  }).then(function(){
+    window.location = "post-edit.html?0=" + newPostKey;
+  });
+}
+
 function pullData(){
   console.log("pulling data from: " + postId);
+  firebase.database().ref(POSTS_REF).child(postId).once('value', function(snapshot){
+    var snap = snapshot.val();
+    inputTitle.value = snap.title;
+    inputAuthor.value = snap.author;
+    inputSnippet.value = snap.snippet;
+    inputBody.value = snap.body;
+    inputCitation.value = snap.citation;
+    inputTags.value = snap.tags;
+    var percentUpload = document.getElementById("percentUpload");
+    percentUpload.innerHTML = snap.pdf;
+    inputLink.value = snap.link;
+    document.getElementById("likes").innerHTML = snap.likes;
+  });
 }
+
+
+
+initApp = function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      document.getElementById("input-author").value = user.displayName;
+    } else {
+      // User is signed out.
+      window.location = "login.html";
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
+
+window.addEventListener('load', function() {
+  initApp()
+});

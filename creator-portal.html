@@ -92,9 +92,32 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <h1> CREATOR PORTAL </h1>
-          <div id="sign-in-status"></div>
-          <div id="sign-in"></div>
-          <div id="account-details"></div>
+
+          <div>
+            <div class="tab">
+              <button class="tablink" onclick="openPostList(event, 'your-uploads')" id="your-uploads-button"> Your uploads </button>
+              <button class="tablink" onclick="openPostList(event, 'starred-posts')"> Starred </button>
+              <button class="tablink" onclick="openPostList(event, 'liked-posts')"> Liked </button>
+
+              <button class="tablink" id="create-post-button" onclick="createNewPost()"> CREATE POST </button>
+            </div>
+
+            <div id="your-uploads" class="tabcontent">
+              <div class="col-lg-8 col-md-10 mx-auto" id="your-uploads-post-container">
+                <hr id="your-uploads-bottom">
+              </div>
+            </div>
+            <div id="starred-posts" class="tabcontent">
+              <div class="col-lg-8 col-md-10 mx-auto" id="starred-posts-post-container">
+                <hr id="starred-posts-bottom">
+              </div>
+            </div>
+            <div id="liked-posts" class="tabcontent">
+              <div class="col-lg-8 col-md-10 mx-auto" id="liked-posts-post-container">
+                <hr id="liked-posts-bottom">
+              </div>
+            </div>
+          </div>
           <!-- Pager -->
           <!-- <div class="clearfix">
             <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
@@ -140,6 +163,8 @@
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/secret.js"></script>
+    <script src="js/constants.js"></script>
+
     <script src="js/portal.js"></script>
 
 
