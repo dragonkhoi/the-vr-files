@@ -112,8 +112,9 @@ function populateTabList(tab){
   });
 }
 
-var currentPostElement = null;
+
 function createPostElement(postObj, tab){
+  var currentPostElement = null;
   var postContainer = document.getElementById(tab + "-post-container");
   var postPreview = document.createElement("div");
   postPreview.setAttribute("class", "post-preview");
@@ -146,8 +147,8 @@ function createPostElement(postObj, tab){
   if(currentPostElement == null){
     currentPostElement = olderPostsBtn;
   }
-  postContainer.insertBefore(postPreview, currentPostElement);
-  postContainer.insertBefore(horizontal, currentPostElement);
+  postContainer.insertBefore(postPreview, olderPostsBtn);
+  postContainer.insertBefore(horizontal, olderPostsBtn);
   currentPostElement = postPreview;
 }
 
